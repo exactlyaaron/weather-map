@@ -20,6 +20,9 @@
 
     let mapOptions = {center: new google.maps.LatLng(lat, lng), zoom: zoom, mapTypeId: google.maps.MapTypeId.ROADMAP, styles: styles};
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+    var cloudLayer = new google.maps.weather.CloudLayer();
+    cloudLayer.setMap(map);
   }
 
   function add(){
@@ -37,7 +40,7 @@
 
       let latLng = new google.maps.LatLng(lat, lng);
       map.setCenter(latLng);
-      map.setZoom(7);
+      map.setZoom(5);
       getWeather(place, name);
     });
 
@@ -57,8 +60,10 @@
     $.getJSON(url, data=>{
       $('#charts').prepend(`<div class="chartdiv" data-place=${place}>`);
       generateChart(place);
-      populateChart(data);
+      //populateChart(data);
+      data.forecast.simpleforecast.forecastday.forEach(f=>chart[place].dataProvider.push({day: f.date.weekday,lowtemp: f.low.fahrenheit,hightemp: f.high.fahrenheit}));
       $('.chartdiv[data-place="'+place+'"]').prepend(`<h2>${name}</h2>`);
+      chart[place].validateData();
     });
   }
 
@@ -128,21 +133,21 @@
 
   }
 
-  function populateChart(data){
-
-    var place = $('#place').val().trim();
-
-    var forecast = data.forecast.simpleforecast.forecastday;
-
-    for(var i = 0; i < forecast.length; i++){
-      chart[place].dataProvider.push({
-        day: forecast[i].date.weekday,
-        lowtemp: forecast[i].low.fahrenheit,
-        hightemp: forecast[i].high.fahrenheit
-      });
-    }
-    chart[place].validateData();
-  }
+  // function populateChart(data){
+  //
+  //   var place = $('#place').val().trim();
+  //
+  //   var forecast = data.forecast.simpleforecast.forecastday;
+  //
+  //   for(var i = 0; i < forecast.length; i++){
+  //     chart[place].dataProvider.push({
+  //       day: forecast[i].date.weekday,
+  //       lowtemp: forecast[i].low.fahrenheit,
+  //       hightemp: forecast[i].high.fahrenheit
+  //     });
+  //   }
+  //   chart[place].validateData();
+  // }
 
 
 
