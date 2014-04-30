@@ -1,0 +1,137 @@
+*:focus{
+  outline:none;
+}
+
+body{
+  font-family:sans-serif;
+  background-image:url(../media/bg.png);
+  margin:0;
+  padding:0;
+}
+
+#container {
+  width:80%;
+  margin:0 auto;
+}
+
+.clear {
+  width:100%;
+  clear:both;
+}
+
+#header{
+  text-align:center;
+  padding:20px;
+  background-color:#46bcec;
+  border:1px solid #eee;
+  color:#fff;
+  margin:0 0 20px 0;
+
+  img{
+    width:30px;
+    height:auto;
+    margin-right: 10px;
+  }
+}
+
+h1 {
+  font-size:24px;
+  display:inline-block;
+  margin:0 0 0 0;
+  padding:0;
+}
+
+h2{
+  text-align:center;
+  color:#fff;
+  margin:0 0 0 0;
+  padding: 8px 0;
+  background-color:#46bcec;
+
+  font-size:13px;
+}
+
+input{
+  padding:10px 20px;
+  box-shadow:none;
+  border: 1px solid #ccc;
+}
+
+input:focus {
+  box-shadow:inset 0px 0px 3px #ccc;
+}
+
+button{
+  padding:11px 16px;
+  background-color:#46bcec;
+  color:#fff;
+  border:0px solid #ccc;
+}
+
+button:hover{
+  background-color:#333;
+}
+
+p {
+  display:inline-block;
+  font-size:12px;
+  color:#333;
+  margin: 10px;
+  background-color:#fff;
+  padding:5px;
+}
+
+#map {
+  width:48%;
+  height:350px;
+  margin-top:25px;
+  border:1px solid #ccc;
+  float:left;
+}
+
+
+#charts {
+  float:right;
+  width:48%;
+  padding-top:25px;
+}
+
+.chartdiv {
+	width: 100%;
+	height: 335px;
+	font-size: 11px;
+  background-color:#fff;
+  margin: 0 0 15px 0;
+  border:1px solid #ccc;
+  padding:0 0 15px 0;
+}
+
+@media all and (max-width: 699px) and (min-width: 500px){
+  #container {
+    width:95%;
+    margin:0 auto;
+    text-align:center;
+  }
+
+  #charts {
+    width:49%;
+  }
+
+  #map {
+    width: 49%;
+  }
+}
+
+@media all and (max-width: 499px) and (min-width: 0px){
+  #container {
+    width:90%;
+    margin:0 auto;
+    text-align:center;
+  }
+
+  #charts, #map {
+    width:90%;
+    float:none;
+    margin:10px auto;
+  }
+}

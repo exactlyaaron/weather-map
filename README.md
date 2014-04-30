@@ -1,4 +1,4 @@
-# client-template
+# weather map 
 
 Serves as a template for client JavaScript applications.
 
